@@ -1,0 +1,9 @@
+/*
+
+!/include
+!/src
+!/thirdparty
+!/.gitignore
+!/.gitmodules
+!/CMakeLists.txt
+!/LICENSE
