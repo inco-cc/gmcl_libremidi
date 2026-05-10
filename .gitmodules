@@ -1,3 +1,6 @@
 [submodule "thirdparty/libremidi"]
 	path = thirdparty/libremidi
 	url = https://github.com/celtera/libremidi
+[submodule "thirdparty/gmod-module-base"]
+	path = thirdparty/gmod-module-base
+	url = https://github.com/Facepunch/gmod-module-base
