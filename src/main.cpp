@@ -28,8 +28,14 @@ GMOD_MODULE_OPEN() {
 	LUA->SetField(-2, "version");
 	LUA->PushString(LIBREMIDI_VERSION);
 	LUA->SetField(-2, "version_internal");
+	LUA->PushCFunction(gmcl_libremidi::libremidi::GetAPIName);
+	LUA->SetField(-2, "GetAPIName");
+	LUA->PushCFunction(gmcl_libremidi::libremidi::GetAPIDisplayName);
+	LUA->SetField(-2, "GetAPIDisplayName");
 	LUA->PushCFunction(gmcl_libremidi::libremidi::GetAvailableAPIs);
 	LUA->SetField(-2, "GetAvailableAPIs");
+	LUA->PushCFunction(gmcl_libremidi::libremidi::GetAvailableUMPAPIs);
+	LUA->SetField(-2, "GetAvailableUMPAPIs");
 	LUA->SetField(-2, "libremidi");
 
 	return 0;

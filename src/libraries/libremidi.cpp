@@ -16,24 +16,37 @@
 
 #define GMOD_ALLOW_DEPRECATED
 
-#include <exception>
-#include <vector>
 #include "libremidi/libremidi.hpp"
 #include "GarrysMod/Lua/Interface.h"
 #include "gmcl_libremidi/libraries/libremidi.hpp"
 
 namespace gmcl_libremidi::libremidi {
 
-int GetAvailableAPIs(lua_State *state) {
-	std::vector<::libremidi::API> available_apis;
-	try {
-		available_apis = ::libremidi::available_apis();
-	} catch (const std::exception &error) {
-		LUA->ThrowError(error.what());
-	}
+int GetAPIName(lua_State *state) {
+	const auto &api = (::libremidi::API)LUA->CheckNumber(1);
+	LUA->PushString(::libremidi::get_api_name(api).data());
+	return 1;
+}
 
+int GetAPIDisplayName(lua_State *state) {
+	const auto &api = (::libremidi::API)LUA->CheckNumber(1);
+	LUA->PushString(::libremidi::get_api_display_name(api).data());
+	return 1;
+}
+
+int GetAvailableAPIs(lua_State *state) {
 	LUA->CreateTable();
-	for (const auto &api : available_apis) {
+	for (const auto &api : ::libremidi::available_apis()) {
+		LUA->PushNumber(LUA->ObjLen() + 1);
+		LUA->PushNumber(api);
+		LUA->SetTable(-3);
+	}
+	return 1;
+}
+
+int GetAvailableUMPAPIs(lua_State *state) {
+	LUA->CreateTable();
+	for (const auto &api : ::libremidi::available_ump_apis()) {
 		LUA->PushNumber(LUA->ObjLen() + 1);
 		LUA->PushNumber(api);
 		LUA->SetTable(-3);

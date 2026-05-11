@@ -18,6 +18,9 @@
 
 namespace gmcl_libremidi::libremidi {
 
-static int GetAvailableAPIs(lua_State *state);
+int GetAPIName(lua_State *state);
+int GetAPIDisplayName(lua_State *state);
+int GetAvailableAPIs(lua_State *state);
+int GetAvailableUMPAPIs(lua_State *state);
 
 } // gmcl_libremidi
