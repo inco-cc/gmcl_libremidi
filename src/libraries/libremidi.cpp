@@ -34,6 +34,12 @@ int GetAPIDisplayName(lua_State *state) {
 	return 1;
 }
 
+int GetCompiledAPIByName(lua_State *state) {
+	auto api_name = LUA->CheckString(1);
+	LUA->PushNumber(::libremidi::get_compiled_api_by_name(api_name));
+	return 1;
+}
+
 int GetAvailableAPIs(lua_State *state) {
 	LUA->CreateTable();
 	for (const auto &api : ::libremidi::available_apis()) {

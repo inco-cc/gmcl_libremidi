@@ -20,6 +20,7 @@ namespace gmcl_libremidi::libremidi {
 
 int GetAPIName(lua_State *state);
 int GetAPIDisplayName(lua_State *state);
+int GetCompiledAPIByName(lua_State *state);
 int GetAvailableAPIs(lua_State *state);
 int GetAvailableUMPAPIs(lua_State *state);
 

@@ -32,6 +32,8 @@ GMOD_MODULE_OPEN() {
 	LUA->SetField(-2, "GetAPIName");
 	LUA->PushCFunction(gmcl_libremidi::libremidi::GetAPIDisplayName);
 	LUA->SetField(-2, "GetAPIDisplayName");
+	LUA->PushCFunction(gmcl_libremidi::libremidi::GetCompiledAPIByName);
+	LUA->SetField(-2, "GetCompiledAPIByName");
 	LUA->PushCFunction(gmcl_libremidi::libremidi::GetAvailableAPIs);
 	LUA->SetField(-2, "GetAvailableAPIs");
 	LUA->PushCFunction(gmcl_libremidi::libremidi::GetAvailableUMPAPIs);
