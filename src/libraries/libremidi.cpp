@@ -22,6 +22,18 @@
 
 namespace gmcl_libremidi::libremidi {
 
+int IsMIDI1(lua_State *state) {
+	const auto &api = (::libremidi::API)LUA->CheckNumber(1);
+	LUA->PushBool(::libremidi::is_midi1(api));
+	return 1;
+}
+
+int IsMIDI2(lua_State *state) {
+	const auto &api = (::libremidi::API)LUA->CheckNumber(1);
+	LUA->PushBool(::libremidi::is_midi2(api));
+	return 1;
+}
+
 int GetAPIName(lua_State *state) {
 	const auto &api = (::libremidi::API)LUA->CheckNumber(1);
 	LUA->PushString(::libremidi::get_api_name(api).data());

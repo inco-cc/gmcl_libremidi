@@ -18,6 +18,8 @@
 
 namespace gmcl_libremidi::libremidi {
 
+int IsMIDI1(lua_State *state);
+int IsMIDI2(lua_State *state);
 int GetAPIName(lua_State *state);
 int GetAPIDisplayName(lua_State *state);
 int GetCompiledAPIByName(lua_State *state);
